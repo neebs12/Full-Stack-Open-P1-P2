@@ -1,12 +1,13 @@
 note over browser:
-The user 'submits' a form which the script
-handles by: 1. Redrawing rendering the new note,
-2. Sending a POST request to the
-server with a body that is the form data
+Submission of form prompts browser to
+execute script. This 1.) updates the 
+view to reflect the new note, and 2.)
+sends a POST request to the server with
+information about the new note
 end note
 
 browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
-server-->browser: json: {"message":"note created"}
+server-->browser: {"message":"note created"}
 
 note over browser:
 Received json data is logged to the console

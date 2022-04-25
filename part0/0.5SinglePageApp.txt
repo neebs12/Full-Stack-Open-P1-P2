@@ -6,18 +6,14 @@ browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
 server-->browser: spa.js
 
 note over browser:
-spa.js is evaluated by browser. 
-A new request is sent to the 
-server requesting the data.json 
-resource
+browser starts executing js code
+that requests JSON data from server
 end note
 
 browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
 server-->browser: data.json
 
 note over browser:
-Receipt of data.json fires an 
-event triggering a handler which 
-renders the notes in the viewport 
-based on the contents of data.json
+browser executes the event handler
+that renders notes to display
 end note
