@@ -1,53 +1,49 @@
 import { useState } from 'react'
 
-const Display = ({ counter }) => {
-  return (
-    <p>The counter is: {counter}</p>
-  );
+const History = ({allClicks}) => {
+  if (allClicks.length === 0) {
+    return (
+      <div>
+        <p>Activate me by pressing buttons!!</p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>{allClicks.join(' ')}</p>
+      </div>
+    );
+  } 
 }
 
-const Button = ({onClick, text}) => {
-  return (
-    <button onClick={onClick}>{text}</button>
-  );
-}
-
-const AnotherButton = ({text}) => {
-  const initialState = 100;
-  const [sideCounter, setSideCounter] = useState(initialState)
-  console.log('AnotherButton re-rendered with state:' + sideCounter);
-
-  const addSideCounter = () => 
-    setSideCounter(sideCounter + initialState);
-
-  return (
-    <div>
-      <button onClick={addSideCounter}>{text}</button>
-      <p>{sideCounter}</p>
-    </div>
-  );
-}
+const Button = ({onClick, text}) =>
+  <button onClick={onClick}>{text}</button>;
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-  console.log('App re-rendered with state:', counter);
+  const [leftClick, setLeftClick] = useState(0);
+  const [rightClick, setRightClick] = useState(0);
+  const [allClicks, setAllClicks] = useState([]);
 
-  const increaseByOne = () => setCounter(counter + 1);
-  const decreaseByTwo = () => setCounter(counter - 2);
-  const setToZero = () => setCounter(0);
-  const noStateChange = () => setCounter(counter);
+  const handleLeftClick = () => {
+    setLeftClick(leftClick + 1);
+    setAllClicks(allClicks.concat('L'));
+  }
 
-  // try and make a button that displays an counter 
+  const handleRightClick = () => {
+    setRightClick(rightClick + 1);
+    setAllClicks(allClicks.concat('R'));
+  }
+
   return (
     <div>
-      <Display counter={counter}/>
-      <Button onClick={increaseByOne} text="Plus 1"/>
-      {/* <Button onClick={decreaseByTwo} text="Minus 2"/>
-      <Button onClick={setToZero} text="reset to 0" />
-      <Button onClick={noStateChange} text="no change!" /> */}
-      <AnotherButton text="Independent"/>
+      {leftClick}
+      <Button onClick={handleLeftClick} text={"left"}/>
+      <Button onClick={handleRightClick} text={"right"}/>
+      {rightClick}
+      <br />
+      <History allClicks={allClicks}/>
     </div>
-  );
-};
+  )
+}
 
 export default App;
