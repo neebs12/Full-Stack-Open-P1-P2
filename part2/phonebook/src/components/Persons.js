@@ -1,6 +1,6 @@
 import DisplayNameNumber from './DisplayNameNumber';
 
-const Persons = ({nameFilter, persons}) => {
+const Persons = ({nameFilter, persons, onClickDeleteNumber}) => {
   const filterPersons = () => {
     // based on nameFilter, use test regex prot method
     if (nameFilter === '') {
@@ -18,7 +18,9 @@ const Persons = ({nameFilter, persons}) => {
         return <DisplayNameNumber 
           key={person.id}
           name={person.name} 
-          number={person.number}/>
+          number={person.number}
+          onClick={onClickDeleteNumber}
+          />
       })}
     </>
   );
