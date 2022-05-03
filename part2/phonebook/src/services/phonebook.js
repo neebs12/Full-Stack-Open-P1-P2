@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001/persons'
+const baseUrl = '/api/persons' // proxy in package.json
 
 const getAll = () => {
   return axios
@@ -30,7 +30,3 @@ const updateNumber = (numberObject) => {
 export default {
   getAll, addNumber, deleteNumber, updateNumber,
 };
-
-/**
- * All callbacks return promise objects
-*/

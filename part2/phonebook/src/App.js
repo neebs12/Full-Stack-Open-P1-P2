@@ -4,7 +4,6 @@ import FilterForm from './components/FilterForm';
 import PersonForm from './components/PersonForm';
 import Persons from './components/Persons';
 import Notification from './components/Notification';
-
 import phonebookService from './services/phonebook';
 
 const App = () => {
@@ -99,7 +98,7 @@ const App = () => {
         setMessage(`Information for ${name} has already been removed from server`);
         setTimeout(() => {
           setMessage(null);
-          setIsError(false); // revert state back :) 
+          setIsError(false); // revert state
         }, 3000)
       });
   };
